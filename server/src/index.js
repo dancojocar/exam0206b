@@ -27,10 +27,9 @@ const surnames = ['Vasile', 'Ion', 'Gheorghe'];
 const groups = ['931', '935'];
 const students = [];
 for (let i = 0; i < 10; i++) {
-    student.push({
+    students.push({
         id: i + 1,
         name: names[getRandomInt(0, names.length - 1)] + " " + surnames[getRandomInt(0, surnames.length - 1)],
-        quantity: getRandomInt(5, 10),
         group: groups[getRandomInt(0, groups.length - 1)],
         presences: 0
     });
@@ -81,8 +80,8 @@ router.post('/add', ctx => {
         const index = students.findIndex(student => student.name === name && student.group === group);
 
         if (index === -1) {
-            let maxId = Math.max.apply(Math, items.map(function (item) {
-                    return item.id;
+            let maxId = Math.max.apply(Math, students.map(function (student) {
+                    return student.id;
                 })) + 1;
             let student = {
                 id: maxId,
